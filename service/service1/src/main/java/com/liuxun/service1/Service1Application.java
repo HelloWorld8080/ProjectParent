@@ -1,10 +1,18 @@
 package com.liuxun.service1;
 
+import com.liuxun.model.service1.OrderVo;
+import com.liuxun.model.service11.ProductVo;
+import com.liuxun.service1.client.Service11Client;
+import com.liuxun.service1.entity.Order;
+import com.liuxun.service1.mapper.OrderDao;
+import com.liuxun.service1.service.OrderService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.ConfigurableApplicationContext;
+
+import java.util.List;
 
 /**
  * @author liuxun
@@ -16,11 +24,17 @@ import org.springframework.context.ConfigurableApplicationContext;
 @EnableFeignClients("com.liuxun.service1.client")
 public class Service1Application {
     public static void main(String[] args) {
+
         ConfigurableApplicationContext run = SpringApplication.run(Service1Application.class, args);
+//        run.getBean(OrderService.class).generateOrder(new OrderVo(1L,95));
+        ProductVo productVo = new ProductVo();
+        productVo.setProductId(1L);
+        productVo.setStore(2);
+        run.getBean(Service11Client.class).updateStoreByid(productVo);
 //        ((OrderDao)run.getBean("orderDao")).insertOrder(new Order(1L,1L,1L,1.0,0,"bzff"));
-//        run.getBean(OrderDao.class).findAll();
+//        List<Order> orders= run.getBean(OrderDao.class).findAll();
 
-
+//        System.out.println("fdf");
 //        List<Order> orders = new ArrayList<>();
 //
 //

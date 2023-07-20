@@ -2,10 +2,10 @@ spring:
   profiles:
     active: dev
   application:
-    name: service1
+    name: service11
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://192.168.38.162:3306/service1?serverTimezone=GMT%2B8&useSSL=false
+    url: jdbc:mysql://192.168.38.163:3306/service11
     username: root
     password: 123456
 #    type: com.alibaba.druid.pool.DruidDataSource
@@ -14,9 +14,8 @@ spring:
       discovery:
         server-addr: 192.168.38.162:8848
 mybatis:
-  mapper-locations: classpath:com/liuxun/service1/mapper/xml/*.xml
+  mapper-locations: classpath:com/liuxun/service11/mapper/xml/*.xml
 server:
-  port: 8801
-
+  port: 8802
 mybatis-plus:
-  mapper-locations: classpath:com/liuxun/service1/mapper/xml/*.xml
+  mapper-locations: classpath:com/liuxun/service11/mapper/xml/*.xml

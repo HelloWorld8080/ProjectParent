@@ -1,6 +1,7 @@
 package com.liuxun.service1.config;
 
 import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 /**
@@ -10,5 +11,6 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 @MapperScan("com.liuxun.service1.mapper")
+//@ComponentScan("com.liuxun.service1.client")
 public class OrderConfig {
 }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.liuxun.com.liuxun.service1.mapper.OrderDao">
-    <insert id="insertOrder" parameterType="com.liuxun.com.liuxun.service1.entity.Order">
+<mapper namespace="com.liuxun.service1.mapper.OrderDao">
+    <insert id="insertOrder" parameterType="com.liuxun.service1.entity.Order">
         INSERT INTO `order` VALUES  (#{id},#{productId},#{payId},#{paySum},#{payStatus},#{userRemark})
     </insert>
     <insert id="insertBatchOrder">

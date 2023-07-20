@@ -20,6 +20,8 @@ public interface OrderDao{
     @Select("select * from `order`")
     List<Order> findAll();
 
+
+
     void insertBatchOrder(List<Order> orders);
 
     void deleteOrder();
