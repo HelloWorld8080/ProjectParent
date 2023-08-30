@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liuxun.order.mapper2.OrderDao2">
+<!--    <insert id="insertOrder" parameterType="com.liuxun.order.entity.Order">-->
+<!--        INSERT INTO `order` VALUES-->
+<!--        <foreach collection="products" separator="," item="product" index="index">-->
+<!--            (#{id},#{product.productId},#{payId},#{paySum},#{payStatus},#{userRemark})-->
+<!--        </foreach>-->
+<!--    </insert>-->
+
+    <insert id="insertOrder">
+        INSERT INTO `order`(order_id,product_id,pay_id,pay_status,consum_num,user_remark) VALUES (#{id},#{productId},#{payId},#{payStatus},#{consumNum},#{userRemark})
+    </insert>
+    <insert id="insertBatchOrder">
+        INSERT INTO `order` VALUES
+        <foreach collection="list" separator="," item="item" index="index">
+            (#{item.id},#{item.productId},#{item.payId},#{item.paySum},#{item.payStatus},#{item.userRemark})
+        </foreach>
+    </insert>
+    <delete id="deleteOrder" >
+        DELETE FROM `order`
+    </delete>
+</mapper>

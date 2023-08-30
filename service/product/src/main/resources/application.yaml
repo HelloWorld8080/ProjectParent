@@ -1,0 +1,46 @@
+spring:
+  profiles:
+    active: dev
+  application:
+    name: product
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://192.168.38.163:3306/product?useSSL=false
+    username: root
+    password: 123456
+    type: com.alibaba.druid.pool.DruidDataSource
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.38.162:8848
+#mybatis:
+#  mapper-locations: classpath:com/liuxun/service11/mapper/xml/*.xml
+server:
+  port: 8802
+mybatis-plus:
+  mapper-locations: classpath:com/liuxun/product/mapper/xml/*.xml
+
+seata:
+  application-id: ${spring.application.name}
+  tx-service-group: default
+  service:
+    vgroup-mapping:
+      default: ff
+    grouplist:
+      ff: 192.168.38.162:8091
+
+
+#  config:
+#    type: nacos
+#    nacos:
+#      server-addr: 192.168.38.162:8848
+#  registry:
+#    type: nacos
+#    nacos:
+#      server-addr: 192.168.38.162:8848
+#      # 服务名,与服务端中registry.conf配置要一致
+#      application: seata-server
+#  tx-service-group: mail_tx_group
+#  service:
+#    vgroup-mapping:
+#      mail_tx_group: "default"

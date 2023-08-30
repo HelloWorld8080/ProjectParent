@@ -1,0 +1,20 @@
+dynamic-ds:
+  datasources:
+    - url: jdbc:mysql://192.168.38.162:3306/service1?serverTimezone=GMT%2B8&useSSL=false
+      username: root
+      password: 123456
+    - url: jdbc:mysql://192.168.38.162:3306/service1?serverTimezone=GMT%2B8&useSSL=false
+      username: root
+      password: 123456
+  rbda:
+    url: jdbc:mysql://192.168.38.162:3306/RBDA?serverTimezone=GMT%2B8&useSSL=false
+    username: root
+    password: 123456
+  product:
+    url: jdbc:mysql://192.168.38.162:3306/product?serverTimezone=GMT%2B8&useSSL=false
+    username: root
+    password: 123456
+  master:
+    url: jdbc:mysql://192.168.38.162:3306/service1?serverTimezone=GMT%2B8&useSSL=false
+    username: root
+    password: 123456

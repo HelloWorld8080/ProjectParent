@@ -1,0 +1,34 @@
+spring:
+  profiles:
+    active: dev
+  application:
+    name: account
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://192.168.38.162:3306/account?useSSL=false
+    username: root
+    password: 123456
+    type: com.alibaba.druid.pool.DruidDataSource
+  redis:
+    host: 192.168.38.165
+    port: 6379
+    database: 0
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.38.162:8848
+#mybatis:
+#  mapper-locations: classpath:com/liuxun/service11/mapper/xml/*.xml
+server:
+  port: 8803
+#mybatis-plus:
+#  mapper-locations: classpath:com/liuxun/account/mapper/xml/*.xml
+
+seata:
+  application-id: ${spring.application.name}
+  tx-service-group: default
+  service:
+    vgroup-mapping:
+      default: ff
+    grouplist:
+      ff: 192.168.38.162:8091

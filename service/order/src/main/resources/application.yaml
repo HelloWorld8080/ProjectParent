@@ -1,0 +1,95 @@
+#seata:
+#  enabled: true
+#  application-id: ${spring.application.name}
+#  # 客户端和服务端在同一个事务组
+#  tx-service-group: shop-public
+#  # 自动数据源代理
+#  enable-auto-data-source-proxy: true
+#  # 数据源代理模式(分布式事务方案)
+#  data-source-proxy-mode: AT
+#  # 事务群组,配置项值为TC集群名,需要与服务端保持一致
+#  service:
+#    vgroup-mapping:
+#      shop-public: default
+spring:
+  redis:
+    host: 192.168.38.165
+    port: 6379
+    database: 0
+  profiles:
+    active: dev
+  application:
+    name: order
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://192.168.38.162:3306/order?serverTimezone=GMT%2B8&useSSL=false
+    username: root
+    password: 123456
+    type: com.alibaba.druid.pool.DruidDataSource
+#    dynamic:
+#      primary: master
+#      strict: false
+#      datasource:
+#        master:
+#          url: jdbc:mysql://192.168.38.162:3306/service1?serverTimezone=GMT%2B8&useSSL=false
+#          username: root
+#          password: 123456
+#        rbda:
+#          url: jdbc:mysql://192.168.38.162:3306/RBDA?serverTimezone=GMT%2B8&useSSL=false
+#          username: root
+#          password: 123456
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.38.162:8848
+#mybatis:
+#  mapper-locations: classpath:com/liuxun/service1/mapper/xml/*.xml
+server:
+  port: 8801
+
+mybatis-plus:
+  mapper-locations: classpath:com/liuxun/order/mapper/ordermapper/xml/*.xml
+
+#seata:
+#  enabled: true
+#  application-id: ${spring.application.name}
+#  config:
+#    type: nacos
+#    nacos:
+#      namespace:
+#      group: SEATA_GROUP
+#      serverAddr: 192.168.38.162:8848
+#      userName: "nacos"
+#      password: "nacos"
+#  registry:
+#    type: nacos
+#    nacos:
+#      application: seata-server
+#      server-addr: 192.168.38.162:8848
+#      namespace:
+#      userName: "nacos"
+#      password: "nacos"
+#      cluster: defualt
+
+#  tx-service-group: g
+
+
+seata:
+  application-id: ${spring.application.name}
+  tx-service-group: default
+  service:
+    vgroup-mapping:
+      default: ff
+    grouplist:
+      ff: 192.168.38.162:8091
+
+
+
+#dynamic-ds:
+#  datasources:
+#    - url: jdbc:mysql://192.168.38.162:3306/service1?serverTimezone=GMT%2B8&useSSL=false
+#      username: root
+#      password: 123456
+#    - url: jdbc:mysql://192.168.38.162:3306/service1?serverTimezone=GMT%2B8&useSSL=false
+#      username: root
+#      password: 123456

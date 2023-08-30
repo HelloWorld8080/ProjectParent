@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liuxun.order.mapper.ordermapper.OrderMapper">
+<!--    <insert id="insertOrder" parameterType="com.liuxun.order.entity.Order">-->
+<!--        INSERT INTO `order` VALUES-->
+<!--        <foreach collection="products" separator="," item="product" index="index">-->
+<!--            (#{id},#{product.productId},#{payId},#{paySum},#{payStatus},#{userRemark})-->
+<!--        </foreach>-->
+<!--    </insert>-->
+
+    <insert id="insertOrder">
+        INSERT INTO `order`(order_no,order_id,product_id,pay_id,pay_status,consum_num,user_remark) VALUES (#{orderNo},#{orderId},#{productId},#{payId},#{payStatus},#{consumNum},#{userRemark})
+    </insert>
+    <insert id="insertBatchOrder">
+        INSERT INTO `order`(order_no,order_id,product_id,account_id,pay_status,consum_num,user_remark) VALUES
+        <foreach collection="list" separator="," item="item" index="index">
+            (#{item.orderNo},#{item.orderId},#{item.productId},#{item.accountId},#{item.payStatus},#{item.consumNum},#{item.userRemark})
+        </foreach>
+    </insert>
+
+    <select id="getOrdersByPage">
+        select * from `order`
+    </select>
+    <delete id="deleteOrder" >
+        DELETE FROM `order`
+    </delete>
+    <update id="updatePayStatusByOrderId">
+        update `order` set pay_status=#{payStatus} where order_id = #{orderId}
+    </update>
+</mapper>

@@ -17,5 +17,3 @@
    <artifactId>spring-boot-starter-web</artifactId>
 </dependency>
 ```
-
-

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liuxun.order.mapper.rbdamapper.RbdaMapper">
+    <select id="getOneByPhone" parameterType="String" resultType="com.liuxun.order.entity.Rbda">
+        select * from RBDA where phone=#{phone}
+    </select>
+    <select id="insert" parameterType="com.liuxun.order.entity.Rbda">
+        insert into RBDA(user_id,phone,table_name ) values(#{userId}, #{phone},#{tableName})
+    </select>
+</mapper>

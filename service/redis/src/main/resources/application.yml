@@ -1,0 +1,30 @@
+#spring.redis.host=192.168.38.158
+#spring.redis.port=6379
+#spring.redis.database=0
+#spring.redis.timeout=1800000
+#spring.redis.lettuce.pool.max-active=20
+#spring.redis.lettuce.pool.max-wait=-1
+#spring.redis.lettuce.pool.max-idle=5
+#spring.redis.lettuce.pool.min-idle=0
+spring:
+  redis:
+    host: 192.168.38.165
+    port: 6379
+    database: 0
+  application:
+    name: redis
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.38.162:8848
+server:
+  port: 8804
+seata:
+  application-id: ${spring.application.name}
+  tx-service-group: default
+  service:
+    vgroup-mapping:
+      default: ff
+    grouplist:
+      ff: 192.168.38.162:8091
+
